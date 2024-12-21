@@ -1,11 +1,11 @@
 # ACCIDENT_DETECTION
 Accident Detection with Speed Detection
 
-Project Description
+**Project Description**
 
 This project implements a real-time system for detecting vehicle accidents with speed detection as a feature. It uses video processing to monitor vehicle speeds, identify collisions, and send alerts to a website with details of the incident, including timestamp, location, and speeds of involved vehicles.
 
-Features
+**Features**
 
 Vehicle Detection and Tracking
 
@@ -15,7 +15,7 @@ Accident Detection through Collision Analysis
 
 Real-time Alert Sending to Web Interface
 
-Prerequisites
+**Prerequisites**
 
 Python (3.x)
 
@@ -41,7 +41,7 @@ Browser:
 
 To view the real-time web interface
 
-Installation Steps
+**Installation Steps**
 
 1. Set Up Python Environment
 
@@ -61,7 +61,7 @@ Clone this repository or copy the project files into your workspace.
 
 Place your video file (e.g., cr.mp4) in the project directory.
 
-Project Structure
+**Project Structure**
 
 AccidentDetectionProject/
 ├── app.py
@@ -79,7 +79,7 @@ templates/index.html: Frontend interface.
 
 static/cr.mp4: Video file for testing.
 
-Running the Project
+**Running the Project**
 
 1. Start the Backend Server
 
