@@ -51,7 +51,7 @@ Ensure Python is installed. You can download it from Python.org.
 
 Run the following commands in the terminal or command prompt:
 
-pip install flask flask-socketio opencv-python numpy python-socketio
+'''pip install flask flask-socketio opencv-python numpy python-socketio'''
 
 3. Clone or Copy the Project
 
