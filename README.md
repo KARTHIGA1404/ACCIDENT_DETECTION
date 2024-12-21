@@ -103,8 +103,8 @@ Run the video processing script to start monitoring:
 
 Accidents and vehicle speeds will be displayed in the browser in real-time.
 
-**Example Alerts
-**
+**Example Alerts**
+
 **Status**: Accident Detected!
 
 **Vehicle Speeds**: {Vehicle 0: 15.2 m/s, Vehicle 1: 13.4 m/s}
