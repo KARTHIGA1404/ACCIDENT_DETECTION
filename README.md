@@ -51,7 +51,7 @@ Ensure Python is installed. You can download it from Python.org.
 
 Run the following commands in the terminal or command prompt:
 
-'''pip install flask flask-socketio opencv-python numpy python-socketio'''
+pip install flask flask-socketio opencv-python numpy python-socketio
 
 3. Clone or Copy the Project
 
@@ -71,13 +71,13 @@ AccidentDetectionProject/
 ├── static/
 │   └── cr.mp4
 
-app.py: Backend server with Flask and SocketIO.
+**app.py**: Backend server with Flask and SocketIO.
 
-main.py: Main script for video processing and accident detection.
+**main.py**: Main script for video processing and accident detection.
 
-templates/index.html: Frontend interface.
+**templates/index.html**: Frontend interface.
 
-static/cr.mp4: Video file for testing.
+**static/cr.mp4**: Video file for testing.
 
 **Running the Project**
 
@@ -85,7 +85,7 @@ static/cr.mp4: Video file for testing.
 
 Run the Flask app to start the server:
 
-python app.py
+**python app.py**
 
 The server will run on http://127.0.0.1:5000.
 
@@ -97,8 +97,18 @@ Open a browser and navigate to http://127.0.0.1:5000 to view the real-time statu
 
 Run the video processing script to start monitoring:
 
-python main.py
+**python main.py**
 
 4. View Alerts
 
 Accidents and vehicle speeds will be displayed in the browser in real-time.
+
+**Example Alerts
+**
+**Status**: Accident Detected!
+
+**Vehicle Speeds**: {Vehicle 0: 15.2 m/s, Vehicle 1: 13.4 m/s}
+
+**Timestamp**: 2024-12-22 15:30:45
+
+**Location**: Latitude: 12.9716, Longitude: 77.5946
