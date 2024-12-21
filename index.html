@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Monitoring System</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .status-panel {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .accident-alert {
+            background-color: #ffebee;
+            color: #c62828;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            display: none;
+        }
+        .speeds-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .speeds-list li {
+            margin: 5px 0;
+            padding: 5px;
+            background-color: #f5f5f5;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Vehicle Monitoring System</h1>
+    
+    <div class="status-panel">
+        <h2>System Status</h2>
+        <p id="current-status">Status: Monitoring</p>
+        <p id="timestamp"></p>
+        <p id="location"></p>
+    </div>
+
+    <div id="accident-alert" class="accident-alert">
+        <h3>⚠️ Accident Detected!</h3>
+        <p>Vehicle speeds at time of collision:</p>
+        <ul id="collision-speeds" class="speeds-list">
+        </ul>
+    </div>
+
+    <script>
+        const socket = io.connect('http://127.0.0.1:5000');
+        
+        socket.on('status_update', (data) => {
+            document.getElementById('current-status').textContent = `Status: ${data.status}`;
+            document.getElementById('timestamp').textContent = `Time: ${data.timestamp}`;
+            document.getElementById('location').textContent = `Location: ${data.location}`;
+
+            const accidentAlert = document.getElementById('accident-alert');
+            const speedsList = document.getElementById('collision-speeds');
+
+            if (data.status.includes('Accident')) {
+                accidentAlert.style.display = 'block';
+                speedsList.innerHTML = ''; // Clear previous speeds
+                
+                // Add each vehicle's speed to the list
+                Object.entries(data.vehicle_speeds).forEach(([vehicle, speed]) => {
+                    const li = document.createElement('li');
+                    li.textContent = `${vehicle}: ${speed}`;
+                    speedsList.appendChild(li);
+                });
+            } else {
+                accidentAlert.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
