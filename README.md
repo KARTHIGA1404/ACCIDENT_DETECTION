@@ -1,4 +1,5 @@
 #**KUMARAGURU COLLEGE OF TECHNOLOGY'S ASSESTS**
+
 **Accident Detection with Speed Detection**
 
 **Project Description**
@@ -140,7 +141,4 @@ Accidents and vehicle speeds will be displayed in the browser in real-time.
 
 ---
 
-**License**
-
-This project is open-source and free to use.
 
