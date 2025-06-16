@@ -1,144 +1,114 @@
-#**CODE IS KUMARAGURU COLLEGE OF TECHNOLOGY'S ASSESTS**#
-
-**Accident Detection with Speed Detection**
-
-**Project Description**
-
-This project implements a real-time system for detecting vehicle accidents with speed detection as a feature. It uses video processing to monitor vehicle speeds, identify collisions, and send alerts to a website with details of the incident, including timestamp, location, and speeds of involved vehicles.
+# **🚗 Vehicle Accident Detection & Real-Time Alert System**
 
 ---
 
-**Features**
+## 🔍 Project Overview
 
-1. **Vehicle Detection and Tracking**
-2. **Speed Calculation of Vehicles**
-3. **Accident Detection through Collision Analysis**
-4. **Real-time Alert Sending to Web Interface**
+This Python-based system detects vehicle movement from video feeds, calculates their speeds, and identifies potential accidents by detecting collisions. Once a collision is confirmed, it sends real-time alerts to a Flask web interface via SocketIO, including vehicle speeds, timestamp, and location details.
 
 ---
 
-**Prerequisites**
-
-1. **Python (3.x)**
-2. **Libraries:**
-   - Flask
-   - Flask-SocketIO
-   - OpenCV
-   - NumPy
-   - SocketIO
-3. **Software:**
-   - Any IDE or text editor (e.g., VS Code, PyCharm)
-   - A video file (e.g., `cr.mp4` for testing)
-4. **Browser:**
-   - To view the real-time web interface
-
----
-
-**Installation Steps**
-
-1. Set Up Python Environment
-
-Ensure Python is installed. You can download it from [Python.org](https://www.python.org/).
-
-2. Install Required Libraries
-
-Run the following commands in the terminal or command prompt:
-
-```bash
-pip install flask flask-socketio opencv-python numpy python-socketio
-```
-
-3. Clone or Copy the Project
-
-Clone this repository or copy the project files into your workspace.
-
-4. Add Video File
-
-Place your video file (e.g., `cr.mp4`) in the project directory.
-
----
-
-**Project Structure**
+## 📂 Project Structure
 
 ```
-AccidentDetectionProject/
-├── app.py
-├── main.py
+vehicle_alert_system/
+├── app.py  # Flask server with SocketIO 
+├── main.py # Vehicle tracking & alert script 
 ├── templates/
-│   └── index.html
-├── static/
-│   └── cr.mp4
+│   └── index.html   # Web UI 
+├── cr.mp4                                    # Input video for vehicle monitoring
+└── README.md                                 # Project documentation
 ```
 
-- `app.py`: Backend server with Flask and SocketIO.
-- `main.py`: Main script for video processing and accident detection.
-- `templates/index.html`: Frontend interface.
-- `static/cr.mp4`: Video file for testing.
+> 💡 Rename the `.py` and `.html` files meaningfully as shown for better clarity in your repo.
 
 ---
 
-Running the Project
+## 🔧 Requirements
 
-1. Start the Backend Server
+* Python 3.x
+* OpenCV
+* NumPy
+* Flask
+* Flask-SocketIO
+* python-socketio (for client)
 
-Run the Flask app to start the server:
+### 📦 Install Dependencies
 
 ```bash
-python app.py
+pip install opencv-python numpy flask flask-socketio "python-socketio[client]"
 ```
 
-The server will run on `http://127.0.0.1:5000`.
+---
 
-2. Open Web Interface
+## ▶️ How to Run
 
-Open a browser and navigate to `http://127.0.0.1:5000` to view the real-time status updates.
-
-3. Run the Main Script
-
-Run the video processing script to start monitoring:
+1. Ensure `cr.mp4` is present in the project directory.
+2. Run the Flask server:
 
 ```bash
-python main.py
+python app.py  # (rename 6ea7... to app.py)
 ```
 
-4. View Alerts
+3. In a new terminal, start the vehicle monitoring script:
 
-Accidents and vehicle speeds will be displayed in the browser in real-time.
+```bash
+python vehicle_monitor.py  # (rename 78e1... to vehicle_monitor.py)
+```
 
----
-
-**How It Works**
-
-1. **Video Processing:** The system reads video frames and detects vehicles using contour detection.
-2. **Speed Calculation:** Tracks vehicle positions between frames to calculate speeds.
-3. **Accident Detection:** Detects collisions and triggers alerts after verifying sustained contact.
-4. **Real-time Updates:** Sends accident data to the web interface using SocketIO.
+4. Open `http://127.0.0.1:5000` in your browser to view the alert dashboard.
 
 ---
 
-**Example Alerts**
+## ⚙️ How It Works
 
-- Status: `Accident Detected!`
-- Vehicle Speeds: `{Vehicle 0: 15.2 m/s, Vehicle 1: 13.4 m/s}`
-- Timestamp: `2024-12-22 15:30:45`
-- Location: `Latitude: 12.9716, Longitude: 77.5946`
+* Reads frames from the input video (`cr.mp4`).
+* Applies motion detection to locate moving vehicles.
+* Tracks vehicle positions and estimates their speeds.
+* Checks for overlapping bounding boxes (potential collisions).
+* If a collision persists for >5 frames:
 
----
-
-**Troubleshooting**
-
-- **Error: Could not open video file**: Ensure `cr.mp4` is in the correct directory.
-- **SocketIO connection issue**: Check if the server is running and accessible.
-- **No accident detection**: Test with different video files.
+  * Calculates and sends speeds of involved vehicles.
+  * Displays an alert with timestamp and location on the web UI via SocketIO.
 
 ---
 
-**Future Enhancements**
+## 🧠 Key Features
 
-1. Improve vehicle detection using YOLO or other advanced object detection models.
-2. Integrate GPS for dynamic location tracking.
-3. Extend alert system to send SMS or emails.
+* Real-time vehicle speed estimation
+* Collision detection using bounding box overlaps
+* Flask-based live dashboard
+* SocketIO-powered instant communication
+* Alerts include speed, time, and location
 
 ---
 
+## 📌 Parameters
 
+* `scale_factor = 0.05`: Assumed pixel-to-meter ratio
+* `collision_frames[key] > 5`: Frame persistence threshold to confirm a crash
+* `video_path = "cr.mp4"`: Input video path
+* `location = "Latitude: 12.9716, Longitude: 77.5946"`: Static geolocation (can be updated)
+
+---
+
+## 📈 Output
+
+* Console shows detection progress and crash info
+* Web dashboard displays:
+
+  * System status (monitoring/crash)
+  * Timestamp and geolocation
+  * Vehicle speeds during crash
+
+---
+## 📸 Output Frame Example
+
+![Screenshot 2025-06-16 155925](https://github.com/user-attachments/assets/40e40148-cf64-4f5f-b403-7ef2ac3312c7)
+![Screenshot (706)](https://github.com/user-attachments/assets/3aa16f50-5b16-40b0-95d0-6a7d6ea86c21)
+![Screenshot 2025-06-16 160044](https://github.com/user-attachments/assets/b5e29c6e-b116-4b9e-a2b7-ac3d709b7c8e)
+
+---
+### 📌
+### The above accident detection is one part of this comprehensive project. 
+The Accident Detection and Alert System is a real-time AI-powered solution that identifies road accidents, detects overspeeding vehicles, and recognizes victims using facial recognition technology. By analyzing live or recorded CCTV footage with computer vision models, the system detects incidents instantly and sends alert messages containing the date, time, and exact location to the nearest police station or emergency contact. It maintains privacy by not storing any personal data and dynamically manages traffic flow during emergencies by counting vehicles in all directions and adjusting traffic signals accordingly. This intelligent system enhances road safety, accelerates emergency response, and supports effective traffic management. 
