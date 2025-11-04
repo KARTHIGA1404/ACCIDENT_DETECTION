@@ -112,3 +112,5 @@ python vehicle_monitor.py  # (rename 78e1... to vehicle_monitor.py)
 ### 📌
 ### The above accident detection is one part of this comprehensive project. 
 The Accident Detection and Alert System is a real-time AI-powered solution that identifies road accidents, detects overspeeding vehicles, and recognizes victims using facial recognition technology. By analyzing live or recorded CCTV footage with computer vision models, the system detects incidents instantly and sends alert messages containing the date, time, and exact location to the nearest police station or emergency contact. It maintains privacy by not storing any personal data and dynamically manages traffic flow during emergencies by counting vehicles in all directions and adjusting traffic signals accordingly. This intelligent system enhances road safety, accelerates emergency response, and supports effective traffic management. 
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/1793076a-af27-4cec-a073-afe93340e4fe" />
+
